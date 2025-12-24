@@ -6,15 +6,12 @@ import { requestInfo } from './middleware/requestInfo.js';
 
 const app = express()
 
-app.use(requestInfo)
 
 app.use('/users',usersRouter)
 app.use('/products',productsRouter)
-
-
-
-
-
+app.get('/idan',(req,res)=>{
+    res.json({message:"helloo i m idan :) !"})
+})
 
 app.listen(8080,()=>{
     console.log("server run....");

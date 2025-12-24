@@ -1,11 +1,18 @@
 import express from "express";
+import { requestInfo } from "../middleware/requestInfo.js";
 
 const usersRouter = express();
 
+usersRouter.use(requestInfo)
 usersRouter.get("/", (req, res) => {
-  console.log(req.source , req.requestTime);
-  
-  res.json({ message: "hello user route" });
+  const source = req.source;
+  const requestTime = req.requestTime;
+
+  res.json({
+    message: "hello user route",
+    source: source,
+    requestTime: requestTime,
+  });
 });
 
 export default usersRouter;
